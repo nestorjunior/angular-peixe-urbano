@@ -12,7 +12,7 @@ export class OfertasService {
     // Efetuar requisição http
     return this.http.get('http://localhost:3000/ofertas')
       .toPromise()
-      .then((resposta: any) => resposta.json())
+      .then((resposta: any) => resposta.json());
     // Retornar uma Promise de Oferta[]
   }
 
