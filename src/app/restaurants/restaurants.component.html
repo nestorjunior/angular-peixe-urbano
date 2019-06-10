@@ -1,27 +1,30 @@
-<main role="main">
+<div class="album py-5 bg-light">
+    <div class="container">
 
-    <div class="album py-5 bg-light">
-        <div class="container">
-
-              <div>
-                  <div class="col-12">
-                      <div class="card">
-                          <img src="">
-                          <div class="card-body">
-                              <h3></h3>
-                              <p class="card-text"></p>
-                              <div class="d-flex justify-content-between align-items-center">
-                                  <div class="btn-group">
-                                      <button type="button" class="btn btn-sm btn-outline-secondary">Ver Oferta</button>
-                                  </div>
-                                  <small class="text-muted"></small>
+          <div>
+              <div class="col-12">
+                  <div class="card" *ngFor="let oferta of ofertas">
+                      <img [src]="oferta.imagens[0].url">
+                      <div class="card-body">
+                          <h3>{{ oferta.titulo }}</h3>
+                          <p class="text-muted">
+                            {{ oferta.anunciante }}
+                          </p>
+                          <p class="card-text">
+                            {{ oferta.descricaoOferta }}
+                          </p>
+                          <div class="d-flex justify-content-between align-items-center">
+                              <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-outline-secondary">Ver Oferta</button>
                               </div>
+                              <p class="text-muted">
+                                <strong> {{ oferta.valor }} </strong>
+                              </p>
                           </div>
                       </div>
                   </div>
               </div>
+          </div>
 
-        </div>
     </div>
-
-  </main>
+</div>
