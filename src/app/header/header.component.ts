@@ -21,7 +21,8 @@ export class HeaderComponent implements OnInit {
   public pesquisa(termoBusca: string): void {
     this.ofertas = this.ofertasServ.pesquisaOfertas(termoBusca);
     this.ofertas.subscribe(
-      (ofertas: Oferta[]) => console.log(ofertas)
+      (ofertas: Oferta[]) => console.log(ofertas),
+      (erro: any) => console.log('Erro status', erro.status)
     )
   }
 }
