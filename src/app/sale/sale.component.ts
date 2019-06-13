@@ -19,11 +19,16 @@ export class SaleComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ofertasServ.getOfertasID(this.route.snapshot.params['id'])
+
+    this.route.params.subscribe((parametros: any) => {
+
+      this.ofertasServ.getOfertasID(parametros.id)
       .then(( oferta: Oferta ) => {
         this.oferta = oferta;
         // console.log(this.oferta)
       })
+
+    })
   }
 
 }

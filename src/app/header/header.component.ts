@@ -37,4 +37,8 @@ export class HeaderComponent implements OnInit {
   public pesquisa(termoBusca: string): void {
     this.itemPesquisa.next(termoBusca)
   }
+
+  public clearSearch(): void {
+    this.itemPesquisa.next('')
+  }
 }
