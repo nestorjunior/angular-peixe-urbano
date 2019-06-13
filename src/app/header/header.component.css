@@ -1,3 +1,7 @@
 .fa-shopping-cart {
   color: #007bff;
 }
+
+.list-group {
+  position: absolute;
+}
