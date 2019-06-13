@@ -1,4 +1,4 @@
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Oferta } from './shared/oferta.model';
 import { URL_API } from './app.api';
@@ -15,20 +15,20 @@ export class OfertasService {
     // Efetuar requisição http
     return this.http.get(`${URL_API}?destaque=true`)
       .toPromise()
-      .then((resposta: any) => resposta.json());
+      .then((resposta: Response) => resposta.json());
     // Retornar uma Promise de Oferta[]
   }
 
   public getOfertasCategoria(categoria: string): Promise<Oferta[]> {
     return this.http.get(`${URL_API}?categoria=${categoria}`)
       .toPromise()
-      .then((resposta: any) => resposta.json())
+      .then((resposta: Response) => resposta.json())
   }
 
   public getOfertasID(id: number): Promise<Oferta> {
     return this.http.get(`${URL_API}?id=${id}`)
       .toPromise()
-      .then((resposta: any) => {
+      .then((resposta: Response) => {
         return resposta.json().shift();
       })
   }
@@ -36,7 +36,7 @@ export class OfertasService {
   public pesquisaOfertas(termo: string): Observable<Oferta[]> {
     return this.http.get(`${URL_API}?descricaoOferta_like=${termo}`)
       .retry(10)
-      .map((resposta: any) => resposta.json())
+      .map((resposta: Response) => resposta.json())
   }
 
 }
