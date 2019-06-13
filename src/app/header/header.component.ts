@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../ofertas.service';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Oferta } from '../shared/oferta.model';
+
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/debounceTime';
 
 @Component({
   selector: 'app-header',
@@ -12,18 +15,23 @@ import { Oferta } from '../shared/oferta.model';
 export class HeaderComponent implements OnInit {
 
   public ofertas: Observable<Oferta[]>
+  private itemPesquisa: Subject<string> = new Subject<string>()
 
   constructor(private ofertasServ: OfertasService) { }
 
   ngOnInit() {
+    this.ofertas = this.itemPesquisa
+      .debounceTime(1000) // executa a ação do switchMap após 1 segundo
+      .switchMap((termo: string) => {
+        console.log('requisição http para api')
+        return this.ofertasServ.pesquisaOfertas(termo)
+      })
+
+    this.ofertas.subscribe((ofertas: Oferta[]) => console.log(ofertas))
   }
 
   public pesquisa(termoBusca: string): void {
-    this.ofertas = this.ofertasServ.pesquisaOfertas(termoBusca);
-    this.ofertas.subscribe(
-      (ofertas: Oferta[]) => console.log(ofertas),
-      (erro: any) => console.log('Erro status', erro.status),
-      () => console.log('Fluxo de eventos completo')
-    )
+    console.log('Keyup caractere', termoBusca)
+    this.itemPesquisa.next(termoBusca)
   }
 }
