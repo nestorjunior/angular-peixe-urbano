@@ -14,7 +14,6 @@ import '../util/rxjs-extensions';
 export class HeaderComponent implements OnInit {
 
   public ofertas: Observable<Oferta[]>
-  public ofertasResult: Oferta[]
   private itemPesquisa: Subject<string> = new Subject<string>()
 
   constructor(private ofertasServ: OfertasService) { }
@@ -24,8 +23,6 @@ export class HeaderComponent implements OnInit {
       .debounceTime(1000) // executa a ação do switchMap após 1 segundo
       .distinctUntilChanged()
       .switchMap((termo: string) => {
-        console.log('requisição http para api')
-
         if(termo.trim() === '') {
           // retornar um Observable de array de ofertas vazio
           return Observable.of<Oferta[]>([])
@@ -33,17 +30,11 @@ export class HeaderComponent implements OnInit {
         return this.ofertasServ.pesquisaOfertas(termo)
       })
       .catch((err: any) => {
-        console.log(err)
         return Observable.of<Oferta[]>([])
-      });
-
-    this.ofertas.subscribe((ofertas: Oferta[]) => {
-      this.ofertasResult = ofertas;
-    })
+      })
   }
 
   public pesquisa(termoBusca: string): void {
-    console.log('Keyup caractere', termoBusca)
     this.itemPesquisa.next(termoBusca)
   }
 }

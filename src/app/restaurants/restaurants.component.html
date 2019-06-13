@@ -18,7 +18,7 @@
                                   <button [routerLink]="['/oferta', oferta.id]" type="button" class="btn btn-sm btn-outline-secondary">Ver Oferta</button>
                               </div>
                               <p class="text-muted">
-                                <strong> {{ oferta.valor }} </strong>
+                                <strong> {{ oferta.valor | currency: 'BRL' }} </strong>
                               </p>
                           </div>
                       </div>
