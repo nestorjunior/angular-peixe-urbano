@@ -3,11 +3,7 @@ import { OfertasService } from '../ofertas.service';
 import { Observable, Subject } from 'rxjs';
 import { Oferta } from '../shared/oferta.model';
 
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
+import '../util/rxjs-extensions';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +14,7 @@ import 'rxjs/add/observable/of';
 export class HeaderComponent implements OnInit {
 
   public ofertas: Observable<Oferta[]>
+  public ofertasResult: Oferta[]
   private itemPesquisa: Subject<string> = new Subject<string>()
 
   constructor(private ofertasServ: OfertasService) { }
@@ -40,7 +37,9 @@ export class HeaderComponent implements OnInit {
         return Observable.of<Oferta[]>([])
       });
 
-    this.ofertas.subscribe((ofertas: Oferta[]) => console.log(ofertas))
+    this.ofertas.subscribe((ofertas: Oferta[]) => {
+      this.ofertasResult = ofertas;
+    })
   }
 
   public pesquisa(termoBusca: string): void {
