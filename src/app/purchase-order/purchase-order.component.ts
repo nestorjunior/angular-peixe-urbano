@@ -20,7 +20,15 @@ export class PurchaseOrderComponent implements OnInit {
   }
 
   public confirmarCompra(): void {
-    console.log(this.dadosFormulario);
+
+    let pedido: Pedido = new Pedido(
+      this.dadosFormulario.value.endereco,
+      this.dadosFormulario.value.numero,
+      this.dadosFormulario.value.complemento,
+      this.dadosFormulario.value.formaPagamento
+    )
+
+    this.ordemCompras.efetivarCompra(pedido).subscribe((idPedido: number) => console.log('PEDIDO: ', idPedido))
   }
 
 }
