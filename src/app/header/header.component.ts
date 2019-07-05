@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OfertasService } from '../ofertas.service';
 import { Observable, Subject } from 'rxjs';
 import { Oferta } from '../shared/oferta.model';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import '../util/rxjs-extensions';
 

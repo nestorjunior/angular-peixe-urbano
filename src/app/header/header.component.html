@@ -7,14 +7,14 @@
               <strong>Peixe Urbano</strong>
           </a>
 
-          <form>
+          <div class="form">
             <input class="form-control" type="search" placeholder="Buscar" #termoPesquisa (keyup)="pesquisa(termoPesquisa.value)">
             <ul class="list-group">
               <li class="list-group-item" *ngFor="let oferta of ofertas | async">
                 <a [routerLink]="['/oferta', oferta.id ]" (click)="clearSearch()">{{ oferta.titulo }}</a>
               </li>
             </ul>
-          </form>
+          </div>
 
         <i class="fas fa-shopping-cart fa-lg"></i>
       </div>

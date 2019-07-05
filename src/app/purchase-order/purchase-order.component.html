@@ -1,6 +1,6 @@
 <div class="container">
   <div class="ordem-compra">
-      <form #formulario="ngForm"(ngSubmit)="confirmarCompra()">
+      <form [formGroup]="formulario">
 
           <h5>Sua Compra</h5>
           <hr />
@@ -66,18 +66,15 @@
           <div class="form-row">
 
               <div class="form-group col-md-6">
-                  <input type="text" class="form-control" placeholder="Endereço" name="endereco" minlength="3" maxlength="120" required ngModel>
-                  <div class="invalid-feedback">Endereço inválido</div>
+                  <input formControlName="endereco" type="text" class="form-control" placeholder="Endereço" minlength="3" maxlength="120" required>
               </div>
 
               <div class="form-group col-md-2">
-                  <input type="text" class="form-control" placeholder="Número" name="numero" minlength="1" maxlength="120" required ngModel>
-                  <br />
-                  <small class="form-text text-muted">Ok</small>
+                  <input formControlName="numero" type="text" class="form-control" placeholder="Número" minlength="1" maxlength="120" required>
               </div>
 
               <div class="form-group col-md-4">
-                  <input type="text" class="form-control" placeholder="Complemento" name="complemento" ngModel>
+                  <input formControlName="complemento" type="text" class="form-control" placeholder="Complemento">
               </div>
 
           </div>
@@ -89,13 +86,11 @@
           <div class="form-row">
 
               <div class="form-group col-md-3">
-                  <select class="form-control" name="formaPagamento" required ngModel>
+                  <select formControlName="formaPagamento" class="form-control" required>
                       <option value="">Selecione uma opção</option>
                       <option value="dinheiro">Dinheiro</option>
                       <option value="debito">Débito</option>
                   </select>
-
-                  <div class="invalid-feedback">Selecione uma forma de pagamento</div>
               </div>
           </div>
 
@@ -103,9 +98,10 @@
           <button type="submit" class="btn btn-primary btn-lg">Cofirmar compra</button>
       </form>
   </div>
+
   <!--
-  <div class="ordem-compra">
-    <app-purchase-order-success></app-purchase-order-success>
+  <div class="ordem-compra" *ngIf="idPedidoCompra !== undefined">
+    <app-purchase-order-success [idPedidoCompraX]=idPedidoCompra></app-purchase-order-success>
   </div>
   -->
 </div>
