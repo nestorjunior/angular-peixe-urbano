@@ -175,6 +175,13 @@
       "complemento": "2",
       "formaPagamento": "dinheiro",
       "id": 6
+    },
+    {
+      "endereco": "Teste4",
+      "numero": "45",
+      "complemento": "45",
+      "formaPagamento": "dinheiro",
+      "id": 7
     }
   ]
 }

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="ordem-compra">
+  <div class="ordem-compra" *ngIf="idPedidoCompra === undefined">
       <form [formGroup]="formulario" (ngSubmit)="confirmarCompra()">
 
           <h5>Sua Compra</h5>
@@ -99,9 +99,9 @@
       </form>
   </div>
 
-  <!--
+
   <div class="ordem-compra" *ngIf="idPedidoCompra !== undefined">
     <app-purchase-order-success [idPedidoCompraX]=idPedidoCompra></app-purchase-order-success>
   </div>
-  -->
+
 </div>
