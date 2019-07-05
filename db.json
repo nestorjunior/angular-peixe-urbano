@@ -168,6 +168,13 @@
       "complemento": "asdfasdf",
       "formaPagamento": "dinheiro",
       "id": 5
+    },
+    {
+      "endereco": "Maria das flores",
+      "numero": "152",
+      "complemento": "2",
+      "formaPagamento": "dinheiro",
+      "id": 6
     }
   ]
 }
