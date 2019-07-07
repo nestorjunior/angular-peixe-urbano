@@ -21,7 +21,6 @@ export class CarrinhoService {
        oferta.valor,
        1
      )
-
-     console.log('DETALHES PRODUTO', itemCarrinho)
+      this.itens.push(itemCarrinho)
     }
 }

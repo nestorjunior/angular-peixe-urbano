@@ -14,6 +14,7 @@ import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { SaleComponent } from './sale/sale.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 import { PurchaseOrderSuccessComponent } from './purchase-order-success/purchase-order-success.component';
+import { CarrinhoService } from "./carrinho.service";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { PurchaseOrderSuccessComponent } from './purchase-order-success/purchase
     ReactiveFormsModule,
     RouterModule
   ],
-  providers: [],
+  providers: [CarrinhoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
