@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PurchaseOrderSuccessComponent implements OnInit {
 
   @Input() public idPedidoCompraX: number
-  // Esse input quer dizer que esse component estera por alguma informação que virá do component pai.
+  // Esse input quer dizer que esse component espera por alguma informação que virá do component pai.
   constructor() { }
 
   ngOnInit() {

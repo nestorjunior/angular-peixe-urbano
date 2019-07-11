@@ -35,18 +35,32 @@ export class PurchaseOrderComponent implements OnInit {
   }
 
   public confirmarCompra(): void {
-    let pedido: Pedido = new Pedido (
-      this.formulario.value.endereco,
-      this.formulario.value.numero,
-      this.formulario.value.complemento,
-      this.formulario.value.formaPagamento
-    )
 
-    this.ordemCompras.efetivarCompra(pedido)
-      .subscribe((idPedido: number) => {
-        this.idPedidoCompra = idPedido
-        console.log(this.idPedidoCompra)
-      })
+    if (this.carrinhoService.exibirItens().length === 0) {
+      alert('Sem itens no carrinho!')
+    }else {
+      let pedido: Pedido = new Pedido (
+        this.formulario.value.endereco,
+        this.formulario.value.numero,
+        this.formulario.value.complemento,
+        this.formulario.value.formaPagamento
+      )
+  
+      this.ordemCompras.efetivarCompra(pedido)
+        .subscribe((idPedido: number) => {
+          this.idPedidoCompra = idPedido
+          console.log(this.idPedidoCompra)
+        })
+    }
+    
+  }
+
+  public adicionar(item: ItemCarrinho): void {
+    this.carrinhoService.adicionarQuantidade(item)
+  }
+
+  public remover(item: ItemCarrinho): void {
+    this.carrinhoService.removerQuantidade(item)
   }
 
 }
