@@ -69,4 +69,8 @@ export class CarrinhoService {
       }
 
     }
+
+  public clearCart(): void{
+    this.itens = []
+  }
 }
